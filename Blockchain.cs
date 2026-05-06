@@ -33,25 +33,16 @@ namespace BlockchainAssignment
         //mines block
         //adds mined block to chain
         //removes transactions from pool
-        public void AddBlock()
+        public void AddBlock(string minerAddress)
         {
             List<Transaction> chosenTransactions = transactionPool.Take(5).ToList();
 
-            Block newBlock = new Block(GetLastBlock(), chosenTransactions);
+            Block newBlock = new Block(GetLastBlock(), chosenTransactions, minerAddress);
 
             blocks.Add(newBlock);
 
             transactionPool = transactionPool.Except(chosenTransactions).ToList();
 
-            Transaction reward = new Transaction(
-                "Mine Rewards",
-                "yourPublicKeyHere",
-                1.0,
-                 0,
-                ""
-            );
-
-            chosenTransactions.Add(reward);
         }
 
         //part 3: adds a transaction to the transaction pool
