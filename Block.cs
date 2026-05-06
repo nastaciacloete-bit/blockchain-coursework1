@@ -85,6 +85,7 @@ namespace BlockchainAssignment
                          + prevHash
                          + nonce.ToString()
                          + difficulty.ToString()
+                         + reward.ToString()
                          + fees.ToString()
                          + minerAddress
                          + transactionData;
